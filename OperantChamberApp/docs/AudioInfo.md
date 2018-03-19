@@ -2,7 +2,7 @@
 
 ## Audio communication
 This app can be interlocked with an external feeder connected to the other devices.<br>
-The connection method using the most inexpensive and simple method as long as the creators come up with adopted, is to reduce as much as possible the burden on the researchers. The method is the one used to sound communication, but the presentation of sound stimulation by the use of the speed limit and sound communication of it process itself also to future updates in its influence is limited. Please note that.<br>
+The connection method using the most inexpensive and simple method as long as the creators come up with adopted, is to reduce as much as possible the burden on the researchers. The method is the one used to sound communication, but the presentation of sound stimulation by the use of the speed limit and sound communication of it process itself also to future updates in its influence is limited. Please note that.
 
 <br>
 
@@ -14,6 +14,8 @@ A sample method using Arduino® is as follows.<br>
 1. Output the sound signal from earphone terminal of an iOS device.
 2. The sound wave Arduino® takes as an analog value. When the Arduino® detects a certain level or more of the sound wave, electrify of 5V-DC to the specified PIN.
 3. This treatment is realized the operation of the feeder by sound communication.
+
+
 
 #### A sample code
 
@@ -40,9 +42,12 @@ void loop() {
 ```
 ###### You can get the sample code on [here](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/codes/Arduino/AudioCommunication/AudioCommunication.ino).
 
+
+
 #### A circuit diagram
 
 ![cd1](https://user-images.githubusercontent.com/22558921/37591062-9de2cf4c-2bad-11e8-86c9-ab2d66c32d69.png)
+
 
 #### Procedure
 
