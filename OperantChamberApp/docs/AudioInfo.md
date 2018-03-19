@@ -10,7 +10,7 @@ The connection method using the most inexpensive and simple method as long as th
 
 #### About
 
-A sample method using Arduino®︎ is as follows.<br>
+A sample method using Arduino® is as follows.<br>
 1. Output the sound signal from earphone terminal of an iOS device.
 2. The sound wave Arduino® takes as an analog value. When the Arduino® detects a certain level or more of the sound wave, electrify of 5V-DC to the specified PIN.
 3. This treatment is realized the operation of the feeder by sound communication.
