@@ -15,7 +15,8 @@ A sample method using Arduino®︎ is as follows.<br>
 #### A sample code
 The sample code of receiving audio signal in Arduino®, copy the following code and paste it into input area of the Arduino® IDE software. After that, select \"Upload to I/O Board\" from the \"File menu\".
 ```java
-int val=0;\nbyte Feeder = 13;
+int val=0;
+byte Feeder = 13;
 
 void setup() {
     // Serial.begin(9800);
@@ -33,8 +34,7 @@ void loop() {
     }
 }
 ```
-
-By removing \"//\" portion of the code, it is possible to check the input values on the PC.
+###### You can get the sample code on [here](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/codes/Arduino/AudioCommunication/AudioCommunication.ino).
 
 
 1. To prepare, an iOS device (you have installed this app), an Arduino (written the code), and an earphone cord.

@@ -1,48 +1,58 @@
-## Down
-[![Build Status](https://travis-ci.org/iwasrobbed/Down.svg?branch=master)](https://travis-ci.org/iwasrobbed/Down)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/iwasrobbed/Down/blob/master/LICENSE)
-[![CocoaPods](https://img.shields.io/cocoapods/v/Down.svg?maxAge=10800)]()
-[![Swift 4](https://img.shields.io/badge/language-Swift-blue.svg)](https://swift.org)
-[![macOS](https://img.shields.io/badge/OS-macOS-orange.svg)](https://developer.apple.com/macos/)
-[![iOS](https://img.shields.io/badge/OS-iOS-orange.svg)](https://developer.apple.com/ios/)
-[![tvOS](https://img.shields.io/badge/OS-tvOS-orange.svg)](https://developer.apple.com/tvos/)
-[![Coverage Status](https://coveralls.io/repos/github/iwasrobbed/Down/badge.svg?branch=master)](https://coveralls.io/github/iwasrobbed/Down?branch=master)
+###### See on [GitHub](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/docs/BLEInfo.md) or download an [app]().
 
-Blazing fast Markdown rendering in Swift, built upon [cmark](https://github.com/jgm/cmark).
+## Audio communication
+This app can be interlocked with an external feeder connected to the other devices.<br>
+The connection method using the most inexpensive and simple method as long as the creators come up with adopted, is to reduce as much as possible the burden on the researchers. The method is the one used to sound communication, but the presentation of sound stimulation by the use of the speed limit and sound communication of it process itself also to future updates in its influence is limited. Please note that.<br>
 
-Is your app using it? [Let us know!](mailto:rob@robphillips.me)
+<br>
 
-#### Maintainers
+### Connect with Arduino
+A sample method using Arduino®︎ is as follows.<br>
+1. Output the sound signal from earphone terminal of an iOS device.
+2. The sound wave Arduino® takes as an analog value. When the Arduino® detects a certain level or more of the sound wave, electrify of 5V-DC to the specified PIN.
+3. This treatment is realized the operation of the feeder by sound communication.
 
-- [Rob Phillips](https://github.com/iwasrobbed)
-- [Keaton Burleson](https://github.com/128keaton)
-- [Other contributors](https://github.com/iwasrobbed/Down/graphs/contributors) 🙌
+#### A sample code
+The sample code of receiving audio signal in Arduino®, copy the following code and paste it into input area of the Arduino® IDE software. After that, select \"Upload to I/O Board\" from the \"File menu\".
+```java
+int val=0;\nbyte Feeder = 13;
 
-### Installation
+void setup() {
+    // Serial.begin(9800);
+    pinMode(Feeder, OUTPUT);
+}
 
-Note: Swift 4 support is now on the `master` branch and any tag >= 0.4.x (Swift 3 is 0.3.x)
+void loop() {
+    val=analogRead(0);
+    // Serial.println(val);
 
-Quickly install using [CocoaPods](https://cocoapods.org):
-
-```ruby
-pod 'Down'
+    if(val >= 25){
+        digitalWrite(Feeder,HIGH);
+        delay(100);
+        digitalWrite (Feeder,LOW);
+    }
+}
+// By removing \"//\" portion of the code, it is possible to check the input values on the PC.
 ```
 
-Or [Carthage](https://github.com/Carthage/Carthage):
 
-```
-github "iwasrobbed/Down"
-```
-Due to limitations in Carthage regarding platform specification, you need to define the platform with Carthage.
+1. To prepare, an iOS device (you have installed this app), an Arduino (written the code), and an earphone cord.
+![ss1](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p1.png)
 
-e.g.
+2. Remove the film on the side of the tip is not a terminal mono earphone cord, divide the lines in two.
+![ss2](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p2.png "p2")
 
-```carthage update --platform iOS```
+	2.1. Optionally, finished by using a heat-shrinkable tube and jumpers wire.
+	![ss3](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p3.png "p3")
 
-Or manually install:
+3. Insert one of the earphone cord to GND pin of Arduino®, and the other end to A0 pin.
+![ss4](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p4.png "p4")
 
-1. Clone this repository
-2. Build the Down project
-3. Add the resulting framework file to your project
-4. ?
-5. Profit
+4. Insert one of the lines of the feeder (or line leading to it) to the GND pin, and the other end to the D13 pin (please be careful if there is a polarity). 
+![ss5](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p5.png "p5")
+
+5. Android™ to connect the earphone, connect Arduino® to power, Android® app start with \"ExperimentType: Experiment\". 
+![ss6](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p6.png "p6")
+
+6. Reinforcement of the app, is a success if feeder is operated by associated! 
+![ss7](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p7.png "p7")
