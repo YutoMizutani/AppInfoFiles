@@ -35,14 +35,14 @@ void loop() {
 By removing \"//\" portion of the code, it is possible to check the input values on the PC.
 
 
-1. To prepare, an iOS device (you have installed this app), an Arduino (written the code), and a monaural earphone cord.
-![ss1](https://github.com/YutoMizutani/getdoi/blob/master/docs/Screen%20Shot%202017-12-15%20ver_0_1_0.png)
+1. To prepare, an iOS device (you have installed this app), an Arduino (written the code), and an earphone cord.
+![ss1](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p1.png "p1")
 
 2. Remove the film on the side of the tip is not a terminal mono earphone cord, divide the lines in two.
-![ss2](ss2.png)
+![ss2](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p2.png "p2")
 
 2.1. Optionally, finished by using a heat-shrinkable tube and jumpers wire.
-![ss2](drawable/OCA/ss3.png)
+![ss3](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/ArduinoWithSound/p3.png "p3")
 
 3. Insert one of the earphone cord to GND pin of Arduino®, and the other end to A0 pin.
 
