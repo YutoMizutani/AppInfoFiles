@@ -42,27 +42,27 @@ void loop() {
 
 #### A circuit diagram
 
-![ss1](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/cd1.png "cd1")
+![ss1](https://raw.githubusercontent.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/cd1.png "cd1")
 
 #### Procedure
 
 1. To prepare, an iOS device (you have installed this app), an Arduino (written the code), and an earphone cord.
-![ss1](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p1.png "p1")
+![ss1](https://raw.githubusercontent.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p1.png "p1")
 
 2. Remove the film on the side of the tip is not a terminal mono earphone cord, divide the lines in two.
-![ss2](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p2.png "p2")
+![ss2](https://raw.githubusercontent.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p2.png "p2")
 
 	2.1. Optionally, finished by using a heat-shrinkable tube and jumpers wire.
-	![ss3](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p3.png "p3")
+	![ss3](https://raw.githubusercontent.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p3.png "p3")
 
 3. Insert one of the earphone cord to GND pin of Arduino®, and the other end to A0 pin.
-![ss4](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p4.png "p4")
+![ss4](https://raw.githubusercontent.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p4.png "p4")
 
 4. Insert one of the lines of the feeder (or line leading to it) to the GND pin, and the other end to the D13 pin (please be careful if there is a polarity). 
-![ss5](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p5.png "p5")
+![ss5](https://raw.githubusercontent.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p5.png "p5")
 
 5. Android™ to connect the earphone, connect Arduino® to power, Android® app start with \"ExperimentType: Experiment\". 
-![ss6](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p6.png "p6")
+![ss6](https://raw.githubusercontent.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p6.png "p6")
 
 6. Reinforcement of the app, is a success if feeder is operated by associated! 
-![ss7](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p7.png "p7")
+![ss7](https://raw.githubusercontent.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p7.png "p7")
