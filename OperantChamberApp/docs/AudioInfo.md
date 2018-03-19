@@ -15,7 +15,7 @@ A sample method using Arduino® is as follows.<br>
 2. The sound wave Arduino® takes as an analog value. When the Arduino® detects a certain level or more of the sound wave, electrify of 5V-DC to the specified PIN.
 3. This treatment is realized the operation of the feeder by sound communication.
 
-
+<br>
 
 #### A sample code
 
@@ -42,12 +42,13 @@ void loop() {
 ```
 ###### You can get the sample code on [here](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/codes/Arduino/AudioCommunication/AudioCommunication.ino).
 
-
+<br>
 
 #### A circuit diagram
 
 ![cd1](https://user-images.githubusercontent.com/22558921/37591062-9de2cf4c-2bad-11e8-86c9-ab2d66c32d69.png)
 
+<br>
 
 #### Procedure
 
