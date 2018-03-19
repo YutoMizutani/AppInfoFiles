@@ -67,7 +67,7 @@ void loop() {
 4. Insert one of the lines of the feeder (or line leading to it) to the GND pin, and the other end to the D13 pin (please be careful if there is a polarity). 
 ![p5](https://user-images.githubusercontent.com/22558921/37591117-c60161dc-2bad-11e8-935c-dfa032dd6b68.png)
 
-5. Android™ to connect the earphone, connect Arduino® to power, Android® app start with \"ExperimentType: Experiment\". 
+5. The iOS device to connect the earphone, connect Arduino® to power, the app start with turning on \"Use SR sound\" option. 
 ![p6](https://user-images.githubusercontent.com/22558921/37591118-c62d7eca-2bad-11e8-8799-8318fb7a9cab.png)
 
 6. Reinforcement of the app, is a success if feeder is operated by associated! 
