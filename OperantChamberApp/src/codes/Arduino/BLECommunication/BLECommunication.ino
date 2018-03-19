@@ -66,11 +66,11 @@ void reset() {
   BTserial.begin(115200);
   Serial.println("Initializing.");
   delay(100);
-  BTserial.write("SF,1\r"); //reset configurations
+  BTserial.write("SF,1\r"); // reset configurations
   SendSerial();
-  BTserial.write("SB,1\r"); //baudrate9600
+  BTserial.write("SB,1\r"); // baudrate9600
   SendSerial();
-  BTserial.write("R,1\r"); //reboot
+  BTserial.write("R,1\r"); // reboot
   SendSerial();
   BTserial.end();
   delay(100);
@@ -88,17 +88,15 @@ void reset() {
   SendSerial();
   BTserial.write("SS,80000001\r"); //user-defined profile
   SendSerial();
-  BTserial.write("ST,0010,0002,0064\r");//I:20ms,L:2,T:1s
-  //interval>=16&&latency<=4&&timeout<=600
-  //&&(interval + 16) * (latency + 1) < timeout * 8 / 3
+  BTserial.write("ST,0010,0002,0064\r");// I:20ms,L:2,T:1s
+  // interval>=16&&latency<=4&&timeout<=600
+  // &&(interval + 16) * (latency + 1) < timeout * 8 / 3
   SendSerial();
   BTserial.write("PZ\r"); //clear PS & PC
   SendSerial();
-  // BTserial.write("PS,FF4BC603B6A343B2AC91D02944F69C00\r"); //set private service
   BTserial.write("PS,21BE11AB10F140CAA0CAA11A11515000\r"); //set private service
   SendSerial();
   //declare char
-//  BTserial.write("PC,FF4BC603B6A343B2AC91D02944F69C01,1A,01\r"); //set private characteristics.
   BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515001,1A,01\r"); //set private characteristics.
   BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515002,1A,01\r"); //set private characteristics.
   SendSerial();
