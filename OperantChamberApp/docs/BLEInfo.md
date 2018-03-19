@@ -6,12 +6,14 @@ Bluetooth LE can connect without authorization, so peripheral devices without kn
 
 <br>
 
-## Peripheral mode (in app)
+## Central/Peripheral mode (in app)
 
 #### About
 
 The app supported BLE both of central mode and peripheral mode.
 A schedule of reinforcement parent is central, peripheral mode is only signal send to central.
+
+<br>
 
 #### Central mode
 
@@ -22,12 +24,16 @@ A schedule of reinforcement parent is central, peripheral mode is only signal se
 
 ![central](https://user-images.githubusercontent.com/22558921/37593377-1d5e8c14-2bb5-11e8-9399-4c88489f9159.jpg)
 
+<br>
+
 #### Peripheral mode
 
 1. Select "Peripheral mode"
 2. Select apparatus and start! (Auto enabled BLE)
 
 ![peripheral](https://user-images.githubusercontent.com/22558921/37593378-1d8ac838-2bb5-11e8-9bf4-690132cee21f.jpg)
+
+<br>
 
 ## Connect with Arduino
 
