@@ -6,13 +6,17 @@ The connection method using the most inexpensive and simple method as long as th
 
 <br>
 
-### Connect with Arduino
+## Connect with Arduino
+
+#### About
+
 A sample method using Arduino®︎ is as follows.<br>
 1. Output the sound signal from earphone terminal of an iOS device.
 2. The sound wave Arduino® takes as an analog value. When the Arduino® detects a certain level or more of the sound wave, electrify of 5V-DC to the specified PIN.
 3. This treatment is realized the operation of the feeder by sound communication.
 
 #### A sample code
+
 The sample code of receiving audio signal in Arduino®, copy the following code and paste it into input area of the Arduino® IDE software. After that, select \"Upload to I/O Board\" from the \"File menu\".
 ```java
 int val=0;
@@ -36,9 +40,14 @@ void loop() {
 ```
 ###### You can get the sample code on [here](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/codes/Arduino/AudioCommunication/AudioCommunication.ino).
 
+#### A circuit diagram
+
+![ss1](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/cd1.png "cd1")
+
+#### Procedure
 
 1. To prepare, an iOS device (you have installed this app), an Arduino (written the code), and an earphone cord.
-![ss1](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p1.png)
+![ss1](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p1.png "p1")
 
 2. Remove the film on the side of the tip is not a terminal mono earphone cord, divide the lines in two.
 ![ss2](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/pics/ArduinoWithSound/p2.png "p2")
