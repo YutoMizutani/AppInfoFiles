@@ -1,4 +1,4 @@
-###### See on [GitHub](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/docs/AudioInfo.md) or download an [app]().
+###### See on [GitHub](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/docs/AudioInfo.md) or download an [app](https://itunes.apple.com/jp/app/operantchamberapp/id1250835517).
 
 ## Audio communication
 This app can be interlocked with an external feeder connected to the other devices.<br>
@@ -20,6 +20,8 @@ A sample method using Arduino® is as follows.<br>
 #### A sample code
 
 The sample code of receiving audio signal in Arduino®, copy the following code and paste it into input area of the Arduino® IDE software. After that, select \"Upload to I/O Board\" from the \"File menu\".
+
+###### You can get the sample code on [here](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/codes/Arduino/AudioCommunication/AudioCommunication.ino).
 ```java
 int val=0;
 byte Feeder = 13;
@@ -40,7 +42,6 @@ void loop() {
     }
 }
 ```
-###### You can get the sample code on [here](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/codes/Arduino/AudioCommunication/AudioCommunication.ino).
 
 <br>
 
