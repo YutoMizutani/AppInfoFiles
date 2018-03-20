@@ -9,67 +9,6 @@ Bluetooth LE can connect without authorization, so peripheral devices without kn
 
 <br>
 
-## Create apparatus
-
-<br>
-
-## Create schedule
-
-Create schedule parameters.
-
-![createschedules_iphonex](https://user-images.githubusercontent.com/22558921/37640017-fe73d8ca-2c56-11e8-8e93-6ed34008593f.jpg)
-
-Load apparatus
-
-- Load
-	- Load saved apparatus
-	
-Apparatus details
-
-<br>
-
-## Start session
-
-Start session you have created apparatus and schedules.
-
-![startsession_iphonex](https://user-images.githubusercontent.com/22558921/37640064-3c66ad74-2c57-11e8-8270-5ebd14eea7b6.jpg)
-
-Start session
-
-Subject (participant)
-
-- Name
-	- Subject or participant name
-- Session#
-	- Session number
-- Phase#
-	- Phase number
-
-Experiment
-
-- Apparatus
-	- Select apparatus before create it.
-- Apparatus
-	- Select schedule before create it.
-
-Other
-
-- Use Demo mode
-	- Show demo buttons (e.g. show log button, end button)
-- Use SR sound
-	- Enabled 1 kHz sound during SR.
-- Use BLE Central mode
-	- Enabled BLE connecting
-
-Start session
-
-- Star
-	- Select favorite (saved for favorite sessions)
-- Button
-	- Start when pressed.
-
-<br>
-
 ## Compute variables
 
 This page has computing VI or VR values. The researchers are compute using this app, and the value use your programs.
