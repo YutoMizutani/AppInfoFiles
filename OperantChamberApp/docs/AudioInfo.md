@@ -6,6 +6,12 @@ The connection method using the most inexpensive and simple method as long as th
 
 <br>
 
+## Algorithm
+
+![al](https://user-images.githubusercontent.com/22558921/37642596-16f80de4-2c61-11e8-872b-347f69f8a294.png)
+
+<br>
+
 ## Connect with Arduino
 
 #### About

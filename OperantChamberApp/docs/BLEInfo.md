@@ -1,8 +1,19 @@
 ###### See on [GitHub](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/docs/AudioInfo.md) or download an [app](https://itunes.apple.com/jp/app/operantchamberapp/id1250835517).
 
 ## Bluetooth LE communication
+
 This app can be connected to the other devices using bluetooth low technology.<br>
 Bluetooth LE can connect without authorization, so peripheral devices without knowing when established connection. It is easy and suitable for experiment.
+
+<br>
+
+## Algorithm
+
+![al1](https://user-images.githubusercontent.com/22558921/37642638-40e222de-2c61-11e8-9592-146ff95fd071.png)
+
+![al2](https://user-images.githubusercontent.com/22558921/37642639-41156dec-2c61-11e8-892f-e6740789488b.png)
+
+This app use number of bytes send/receive data for Bluetooth LE. The method is faster than translate data from text or number.
 
 <br>
 
@@ -226,7 +237,9 @@ void UserFunc(unsigned long num) {
 
 <br>
 
-#### Diagram
+#### Circuit diagram
+
+![cd1](https://user-images.githubusercontent.com/22558921/37642556-dd7b59fe-2c60-11e8-96d4-fdcd624a1a42.png)
 
 ![rn4020](https://user-images.githubusercontent.com/22558921/37634953-2a5fc3ce-2c3c-11e8-8c6e-38401823077a.jpeg)
 
