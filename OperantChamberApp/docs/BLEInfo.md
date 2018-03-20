@@ -210,11 +210,11 @@ void UserFunc(unsigned long num) {
       //Serial.println("test");
       break;
     case 2:
-      digitalWrite(12, HIGH);
+      digitalWrite(13, HIGH);
       Serial.println("ON!");
       break;
     case 3:
-      digitalWrite(12, LOW);
+      digitalWrite(13, LOW);
       Serial.println("OFF!");
       break;
     default:
