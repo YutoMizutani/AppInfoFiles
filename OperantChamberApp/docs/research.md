@@ -2,10 +2,24 @@
 
 ## Research
 
-## About
+<br>
 
-This app can be connected to the other devices using bluetooth low technology.<br>
-Bluetooth LE can connect without authorization, so peripheral devices without knowing when established connection. It is easy and suitable for experiment.
+## Data analysis
+
+### Cumulative record
+
+In result view, See cumulative record by horizontal swipe.
+
+### Data saving
+
+In result view, multiple save functions the app has.
+
+- Save data
+	- The data saved into your app. The data can see Top/Results/Saved results.
+- Export raw data
+	- The raw data text saves to local storage. The texts can picked up using computers. See also [here](https://support.apple.com/en-us/HT201301).
+- Upload to Dropbox
+	- The raw data text uploads to Dropbox. You can access the data from Dropbox.
 
 <br>
 
@@ -30,7 +44,8 @@ This page has computing VI or VR values. The researchers are compute using this 
 
 ## Connect to external devices
 
-This app can connect to other devices. for iPad to iPhone, iPhone to iPhone, iPhone to Arduino® with extend chambers or feeders.
+This app can be connected to the other devices using bluetooth low technology.<br>
+Bluetooth LE can connect without authorization, so peripheral devices without knowing when established connection. It is easy and suitable for experiment. For iPad to iPhone, iPhone to iPhone, iPhone to Arduino® with extend chambers or feeders.
 
 <br>
 
