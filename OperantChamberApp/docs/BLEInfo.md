@@ -15,6 +15,8 @@ Bluetooth LE can connect without authorization, so peripheral devices without kn
 
 This app use number of bytes send/receive data for Bluetooth LE. The method is faster than translate data from text or number.
 
+1 byte is 8 bits, it has the range 0-255. Number of bytes Integer (Int64) in Swift has 8 bytes. The range of Int64 is -2,147,483,648 to 2,147,483,647. Event marker used experiment has not necessary to use too many numbers. This algorithm to change number of number of bits. For example, sending 100 formatted from Integer, the bytes are 8, but sending 100 formatted from Data (byte array), the byte is 1. This method is faster than normally sending.
+
 <br>
 
 ## Central/Peripheral mode (in app)
