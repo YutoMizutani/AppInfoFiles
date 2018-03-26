@@ -9,9 +9,9 @@ Bluetooth LE can connect without authorization, so peripheral devices without kn
 
 ## Algorithm
 
-![al1](https://user-images.githubusercontent.com/22558921/37642638-40e222de-2c61-11e8-9592-146ff95fd071.png)
+![al1](https://user-images.githubusercontent.com/22558921/37893187-3f3e369e-3115-11e8-921a-77693dec84ed.png)
 
-![al2](https://user-images.githubusercontent.com/22558921/37642639-41156dec-2c61-11e8-892f-e6740789488b.png)
+![al2](https://user-images.githubusercontent.com/22558921/37893188-3f6ef540-3115-11e8-87c4-efd8472563f2.png)
 
 This app use number of bytes send/receive data for Bluetooth LE. The method is faster than translate data from text or number.
 
