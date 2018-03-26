@@ -64,54 +64,28 @@ The sample code of receiving audio signal in Arduino®, copy the following code 
 ###### You can get the sample code on [here](https://github.com/YutoMizutani/AppInfoFiles/blob/master/OperantChamberApp/src/codes/Arduino/BLECommunication/BLECommunication.ino).
 ```java
 /*-----------------------------------------------------------------*/
-
+ 
 #include <SoftwareSerial.h>
 
 /*-----------------------------------------------------------------*/
 
 SoftwareSerial BTserial(2, 3); // RN4020-TX->Arduino-PIN2-RX, RN4020-RX->Arduino-PIN3-TX
-const int lenEMB = 7; // (0 to 7):max length of event marker.
-//[lenEMB変数の範囲について]
-//使わないと分かっているならばそのbyte数だけ切り捨てることで処理速度が向上します。
-//Arduino UNOではInt型が2byte()
+
 int response = 0;
 
 /*=================================================================*/
 
-unsigned long IntbyteToUL(int x, int y) { //0xXY -> uLong
-  // Serial.print("Debug-IntbyteToUL:");Serial.println(x * 16 + y);
-  return x * 16 + y;
-}
+unsigned long stringToUnsignedLong(String x) {
+  unsigned long long y = 0;
 
-int HexadecimalToInt(char chr) {//e.g. 'A' -> 10
-  switch (chr) {
-    case 'A':
-      return 10;
-    case 'B':
-      return 11;
-    case 'C':
-      return 12;
-    case 'D':
-      return 13;
-    case 'E':
-      return 14;
-    case 'F':
-      return 15;
-    default:
-      return chr - '0';
+  for (int i = 0; i < x.length(); i++) {
+      char c = x.charAt(i);
+     if (c < '0' || c > '9') break;
+     y *= 10;
+     y += (c - '0');
   }
-}
-unsigned long StrLittleEndianToUL(String str) { //
-  unsigned long result = 0;
-  for (int i = 0; i <= lenEMB; i++) {
-    unsigned long digit = (i == 0 ? 1 : pow(256, i) + 1);
-    //Serial.println("Debug-i:"+String(i));
-    //Serial.print("Debug-digit:");Serial.println(digit);
-    //Serial.println("Debug-UL:"+String(str[i * 2])+", "+String(str[i * 2+1]));
-    result += IntbyteToUL(HexadecimalToInt(str[i * 2]), HexadecimalToInt(str[i * 2 + 1])) * digit;
-    //Serial.print("Debug-result:");Serial.println(result);
-  }
-  return result;
+  
+  return y;
 }
 
 /*=================================================================*/
@@ -188,22 +162,20 @@ void loop() {
       char buf[len];
       strx.toCharArray(buf, len);
       BTserial.write(buf);
-      Serial.println("//Serial read!:");
+      Serial.println("// Serial read!:");
       Serial.println(buf);
       Serial.println("--------------------------------");
     }
   }
   if (BTserial.available()) {
     String str = BTserial.readStringUntil('\n');
-    Serial.println("//BT read!:");
-    //Serial.println(str.length());
-    if (str.length() == 26) {
-      //Serial.println("Debug-read:"+str);
-      String strLittleEndian = str.substring(8, 24);
-      //Serial.println("Debug-strLE:" + strLittleEndian);
-      unsigned long readNum = StrLittleEndianToUL(strLittleEndian);
-      Serial.println("Num:" + String(readNum));
-      UserFunc(readNum);
+    Serial.println("// BT read!:");
+    int len = str.length();
+    if (len >= 12) {
+      int range = len - 10;
+      String numString = str.substring(8, 8+range);
+      unsigned long num = stringToUnsignedLong(numString);
+      UserFunc(num);
     } else {
       Serial.println(str);
     }
@@ -215,18 +187,26 @@ void loop() {
 /*=================================================================*/
 
 void UserFunc(unsigned long num) {
+  Serial.println("Input: " + String(num));
   switch (num) {
     //Write your own some functions corresponding the Event Marker.
-    case 0: //EM:00
-      //Serial.println("test");
-      break;
-    case 2:
-      digitalWrite(13, HIGH);
-      Serial.println("ON!");
+    case 1:
+      response++;
       break;
     case 3:
+      digitalWrite(13, HIGH);
+      Serial.println("SRON!");
+      break;
+    case 4:
       digitalWrite(13, LOW);
-      Serial.println("OFF!");
+      Serial.println("SROFF!");
+      break;
+    case 7:
+      Serial.println("--------------------------------");
+      Serial.println("Session finished!");
+      Serial.println("Total responses: " + String(response));
+      Serial.println("--------------------------------");
+      reset();
       break;
     default:
       break;
