@@ -37,6 +37,7 @@ unsigned long stringToUnsignedLong(String x) {
 
 void setup() {
   Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
   reset();
 }
 void reset() {
@@ -139,11 +140,11 @@ void UserFunc(unsigned long num) {
       response++;
       break;
     case 3:
-      digitalWrite(13, HIGH);
+      digitalWrite(LED_BUILTIN, HIGH);
       Serial.println("SRON!");
       break;
     case 4:
-      digitalWrite(13, LOW);
+      digitalWrite(LED_BUILTIN, LOW);
       Serial.println("SROFF!");
       break;
     case 7:
