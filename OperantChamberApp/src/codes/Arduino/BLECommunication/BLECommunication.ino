@@ -16,6 +16,15 @@
 
 SoftwareSerial BTserial(2, 3); // RN4020-TX->Arduino-PIN2-RX, RN4020-RX->Arduino-PIN3-TX
 
+// PIN numbers
+const int lever = 7;
+const int leverLED = 8;
+const int feeder = 13;
+
+// Parameters:
+//    - currentState: State of lever pushing. 0: false, 1: true
+//    - response: Number of response received from BLE
+int currentState = 0;
 int response = 0;
 
 /*=================================================================*/
@@ -37,7 +46,9 @@ unsigned long stringToUnsignedLong(String x) {
 
 void setup() {
   Serial.begin(9600);
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(lever, INPUT_PULLUP);
+  pinMode(leverState, OUTPUT);
+  pinMode(feeder, OUTPUT);
   reset();
 }
 void reset() {
@@ -76,7 +87,7 @@ void reset() {
   SendSerial();
   //declare char
   BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515001,1A,01\r"); //set private characteristics.
-  BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515002,1A,01\r"); //set private characteristics.
+  // BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515002,1A,01\r"); //set private characteristics.
   SendSerial();
   BTserial.write("R,1\r");
   SendSerial();
@@ -94,10 +105,26 @@ void SendSerial() {
   }
   Serial.flush();
 }
+/*-----------------------------------------------------------------*/
+void leverState() {
+  if (currentState != digitalRead(lever)) {
+    currentState = digitalRead(lever);
+    digitalWrite(leverLED, !currentState);
+    sendResponse(currentState);
+  }
+}
+void sendResponse(int state) {
+  if (state) {
+    Serial.println(state);
+    BTserial.write("SHW,0018,01\r");
+  }
+}
+/*-----------------------------------------------------------------*/
 
 void loop() {
+  leverState();
   if (Serial.available()) {
-    //Command is '\r' or '\n'
+    // Command is '\r' or '\n'
     String str = Serial.readStringUntil('\r');
       String strx = str + '\r';
     if (str == "reset") {
@@ -107,10 +134,10 @@ void loop() {
       int len = strx.length() + 1;
       char buf[len];
       strx.toCharArray(buf, len);
-      BTserial.write(buf);
       Serial.println("// Serial read!:");
       Serial.println(buf);
       Serial.println("--------------------------------");
+      BTserial.write(buf);
     }
   }
   if (BTserial.available()) {
@@ -118,6 +145,8 @@ void loop() {
     Serial.println("// BT read!:");
     int len = str.length();
     if (len >= 12) {
+      Serial.print(str);
+      Serial.print(' ');
       int range = len - 10;
       String numString = str.substring(8, 8+range);
       unsigned long num = stringToUnsignedLong(numString);
@@ -128,6 +157,7 @@ void loop() {
     Serial.println("--------------------------------");
   }
   Serial.flush();
+  delay(1);
 }
 
 /*=================================================================*/
@@ -140,11 +170,11 @@ void UserFunc(unsigned long num) {
       response++;
       break;
     case 3:
-      digitalWrite(LED_BUILTIN, HIGH);
+      digitalWrite(feeder, HIGH);
       Serial.println("SRON!");
       break;
     case 4:
-      digitalWrite(LED_BUILTIN, LOW);
+      digitalWrite(feeder, LOW);
       Serial.println("SROFF!");
       break;
     case 7:

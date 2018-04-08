@@ -73,146 +73,177 @@ The sample code of receiving audio signal in Arduino®, copy the following code 
 
 SoftwareSerial BTserial(2, 3); // RN4020-TX->Arduino-PIN2-RX, RN4020-RX->Arduino-PIN3-TX
 
+// PIN numbers
+const int lever = 7;
+const int leverLED = 8;
+const int feeder = 13;
+
+// Parameters:
+//    - currentState: State of lever pushing. 0: false, 1: true
+//    - response: Number of response received from BLE
+int currentState = 0;
 int response = 0;
 
 /*=================================================================*/
 
 unsigned long stringToUnsignedLong(String x) {
-  unsigned long long y = 0;
+    unsigned long long y = 0;
+    
+    for (int i = 0; i < x.length(); i++) {
+        char c = x.charAt(i);
+        if (c < '0' || c > '9') break;
+        y *= 10;
+        y += (c - '0');
+    }
 
-  for (int i = 0; i < x.length(); i++) {
-      char c = x.charAt(i);
-     if (c < '0' || c > '9') break;
-     y *= 10;
-     y += (c - '0');
-  }
-  
-  return y;
+    return y;
 }
 
 /*=================================================================*/
 
 void setup() {
-  Serial.begin(9600);
-  reset();
+    Serial.begin(9600);
+    pinMode(lever, INPUT_PULLUP);
+    pinMode(leverState, OUTPUT);
+    pinMode(feeder, OUTPUT);
+    reset();
 }
 void reset() {
-  BTserial.begin(115200);
-  Serial.println("Initializing.");
-  delay(100);
-  BTserial.write("SF,1\r"); // reset configurations
-  SendSerial();
-  BTserial.write("SB,1\r"); // baudrate9600
-  SendSerial();
-  BTserial.write("R,1\r"); // reboot
-  SendSerial();
-  BTserial.end();
-  delay(100);
-  Serial.println("Initializing..");
-  BTserial.begin(9600);
-  delay(100);
-  BTserial.write("+\r"); //Echo On
-  SendSerial();
-  Serial.println("Initializing...");
-  Serial.println("--------------------------------");
-  SendSerial();
-  BTserial.write("SB,1\r"); //set baudrate 9600
-  SendSerial();
-  BTserial.write("SR,20006000\r"); //set peripheral, for iOS, server
-  SendSerial();
-  BTserial.write("SS,80000001\r"); //user-defined profile
-  SendSerial();
-  BTserial.write("ST,0010,0002,0064\r");// I:20ms,L:2,T:1s
-  // interval>=16&&latency<=4&&timeout<=600
-  // &&(interval + 16) * (latency + 1) < timeout * 8 / 3
-  SendSerial();
-  BTserial.write("PZ\r"); //clear PS & PC
-  SendSerial();
-  BTserial.write("PS,21BE11AB10F140CAA0CAA11A11515000\r"); //set private service
-  SendSerial();
-  //declare char
-  BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515001,1A,01\r"); //set private characteristics.
-  BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515002,1A,01\r"); //set private characteristics.
-  SendSerial();
-  BTserial.write("R,1\r");
-  SendSerial();
-  delay(1000);
-  Serial.println("--------------------------------");
-  Serial.println("completed!");
-  Serial.println("--------------------------------");
+    BTserial.begin(115200);
+    Serial.println("Initializing.");
+    delay(100);
+    BTserial.write("SF,1\r"); // reset configurations
+    SendSerial();
+    BTserial.write("SB,1\r"); // baudrate9600
+    SendSerial();
+    BTserial.write("R,1\r"); // reboot
+    SendSerial();
+    BTserial.end();
+    delay(100);
+    Serial.println("Initializing..");
+    BTserial.begin(9600);
+    delay(100);
+    BTserial.write("+\r"); //Echo On
+    SendSerial();
+    Serial.println("Initializing...");
+    Serial.println("--------------------------------");
+    SendSerial();
+    BTserial.write("SB,1\r"); //set baudrate 9600
+    SendSerial();
+    BTserial.write("SR,20006000\r"); //set peripheral, for iOS, server
+    SendSerial();
+    BTserial.write("SS,80000001\r"); //user-defined profile
+    SendSerial();
+    BTserial.write("ST,0010,0002,0064\r");// I:20ms,L:2,T:1s
+    // interval>=16&&latency<=4&&timeout<=600
+    // &&(interval + 16) * (latency + 1) < timeout * 8 / 3
+    SendSerial();
+    BTserial.write("PZ\r"); //clear PS & PC
+    SendSerial();
+    BTserial.write("PS,21BE11AB10F140CAA0CAA11A11515000\r"); //set private service
+    SendSerial();
+    //declare char
+    BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515001,1A,01\r"); //set private characteristics.
+    // BTserial.write("PC,21BE11AB10F140CAA0CAA11A11515002,1A,01\r"); //set private characteristics.
+    SendSerial();
+    BTserial.write("R,1\r");
+    SendSerial();
+    delay(1000);
+    Serial.println("--------------------------------");
+    Serial.println("completed!");
+    Serial.println("--------------------------------");
 }
 /*-----------------------------------------------------------------*/
 void SendSerial() {
-  BTserial.flush();
-  if (BTserial.available()) {
-    String str = BTserial.readStringUntil('\n');
-    Serial.println(str);
-  }
-  Serial.flush();
+    BTserial.flush();
+    if (BTserial.available()) {
+        String str = BTserial.readStringUntil('\n');
+        Serial.println(str);
+    }
+    Serial.flush();
 }
+/*-----------------------------------------------------------------*/
+void leverState() {
+    if (currentState != digitalRead(lever)) {
+    currentState = digitalRead(lever);
+    digitalWrite(leverLED, !currentState);
+    sendResponse(currentState);
+    }
+}
+void sendResponse(int state) {
+    if (state) {
+    Serial.println(state);
+    BTserial.write("SHW,0018,01\r");
+    }
+}
+/*-----------------------------------------------------------------*/
 
 void loop() {
-  if (Serial.available()) {
-    //Command is '\r' or '\n'
-    String str = Serial.readStringUntil('\r');
-      String strx = str + '\r';
-    if (str == "reset") {
-      Serial.println("// Reset called!");
-      reset();
-    }else{
-      int len = strx.length() + 1;
-      char buf[len];
-      strx.toCharArray(buf, len);
-      BTserial.write(buf);
-      Serial.println("// Serial read!:");
-      Serial.println(buf);
-      Serial.println("--------------------------------");
+    leverState();
+    if (Serial.available()) {
+        // Command is '\r' or '\n'
+        String str = Serial.readStringUntil('\r');
+        String strx = str + '\r';
+        if (str == "reset") {
+            Serial.println("// Reset called!");
+            reset();
+        }else{
+            int len = strx.length() + 1;
+            char buf[len];
+            strx.toCharArray(buf, len);
+            Serial.println("// Serial read!:");
+            Serial.println(buf);
+            Serial.println("--------------------------------");
+            BTserial.write(buf);
+        }
     }
-  }
-  if (BTserial.available()) {
-    String str = BTserial.readStringUntil('\n');
-    Serial.println("// BT read!:");
-    int len = str.length();
-    if (len >= 12) {
-      int range = len - 10;
-      String numString = str.substring(8, 8+range);
-      unsigned long num = stringToUnsignedLong(numString);
-      UserFunc(num);
-    } else {
-      Serial.println(str);
+    if (BTserial.available()) {
+        String str = BTserial.readStringUntil('\n');
+        Serial.println("// BT read!:");
+        int len = str.length();
+        if (len >= 12) {
+            Serial.print(str);
+            Serial.print(' ');
+            int range = len - 10;
+            String numString = str.substring(8, 8+range);
+            unsigned long num = stringToUnsignedLong(numString);
+            UserFunc(num);
+        } else {
+            Serial.println(str);
+        }
+        Serial.println("--------------------------------");
     }
-    Serial.println("--------------------------------");
-  }
-  Serial.flush();
+    Serial.flush();
+    delay(1);
 }
 
 /*=================================================================*/
 
 void UserFunc(unsigned long num) {
-  Serial.println("Input: " + String(num));
-  switch (num) {
-    //Write your own some functions corresponding the Event Marker.
-    case 1:
-      response++;
-      break;
-    case 3:
-      digitalWrite(13, HIGH);
-      Serial.println("SRON!");
-      break;
-    case 4:
-      digitalWrite(13, LOW);
-      Serial.println("SROFF!");
-      break;
-    case 7:
-      Serial.println("--------------------------------");
-      Serial.println("Session finished!");
-      Serial.println("Total responses: " + String(response));
-      Serial.println("--------------------------------");
-      reset();
-      break;
-    default:
-      break;
-  }
+    Serial.println("Input: " + String(num));
+    switch (num) {
+        //Write your own some functions corresponding the Event Marker.
+        case 1:
+            response++;
+            break;
+        case 3:
+            digitalWrite(feeder, HIGH);
+            Serial.println("SRON!");
+            break;
+        case 4:
+            digitalWrite(feeder, LOW);
+            Serial.println("SROFF!");
+        break;
+        case 7:
+            Serial.println("--------------------------------");
+            Serial.println("Session finished!");
+            Serial.println("Total responses: " + String(response));
+            Serial.println("--------------------------------");
+            reset();
+            break;
+        default:
+            break;
+    }
 }
 
 ```
