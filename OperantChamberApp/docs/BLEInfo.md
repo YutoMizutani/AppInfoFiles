@@ -2,10 +2,16 @@
 
 ## Bluetooth LE communication
 
-This app can be connected to the other devices using bluetooth low technology.<br>
+OperantChamberApp supports multiple connecting the others iOS and Arduino using bluetooth low technology.<br>
 Bluetooth LE can connect without authorization, so peripheral devices without knowing when established connection. It is easy and suitable for experiment.
 
 <br>
+
+## Movie
+
+A sample movie between iOS and Arduino communication.
+[![mov img](https://user-images.githubusercontent.com/22558921/38550469-9c754d4c-3cf1-11e8-88a0-43e74974fb44.png)](https://youtu.be/9x3g5t018WQ)
+[https://youtu.be/9x3g5t018WQ](https://youtu.be/9x3g5t018WQ)
 
 ## Algorithm
 
@@ -257,3 +263,14 @@ void UserFunc(unsigned long num) {
 ![rn4020](https://user-images.githubusercontent.com/22558921/37634953-2a5fc3ce-2c3c-11e8-8c6e-38401823077a.jpeg)
 
 <br>
+
+#### Procedure
+
+1. To prepare, an iOS device (you have installed this app), an Arduino (written the code), and a Bluetooth LE device (e.g. RN4020).
+![img_0736](https://user-images.githubusercontent.com/22558921/38535321-ef959600-3cbd-11e8-9249-88452212bbf3.jpg)
+
+2. Connect the Arduino® them (BLE module, levers, and feeders).
+![img_0739](https://user-images.githubusercontent.com/22558921/38535323-efecb64c-3cbd-11e8-8e82-e2a3c069b7c5.jpg)
+![img_0738](https://user-images.githubusercontent.com/22558921/38535322-efbfd316-3cbd-11e8-8339-ad7fea0f6186.jpg)
+
+3. Write the codes for the Arduino® and start connecting!
